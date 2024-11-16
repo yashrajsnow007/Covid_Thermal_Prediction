@@ -6,13 +6,11 @@ export default function Home() {
     <div className="font-mono">
       <div className="flex flex-col items-center w-4/5 mx-auto mt-12">
         <h1 className="text-4xl text-center font-bold">
-          Image Retrieval Using CIFAR-10 Dataset
+          Covid Classification using Multimodal Data
         </h1>
         <div className="mt-6 mb-4">
-          <h2 className="text-center text-2xl">
-            Pattern Recognition and Machine Learning
-          </h2>
-          <h2 className="text-center text-1xl">Spring 2024 IIT Jodhpur</h2>
+          <h2 className="text-center text-2xl">Data Engineering</h2>
+          <h2 className="text-center text-1xl">Autumn 2024 IIT Jodhpur</h2>
         </div>
         <ul className="lg:flex lg:flex-wrap w-1/2 lg:gap-x-12 lg:p-2 lg:gap-y-6 lg:m-2">
           <li className="py-2 lg:py-0">
@@ -28,81 +26,54 @@ export default function Home() {
             <a
               href="https://github.com/yashrajsnow007"
               target="_blank"
-              className="underline  hover:text-gray-500"
+              className="underline hover:text-gray-500"
             >
               Yashraj Chaturvedi
             </a>
           </li>
           <li className="py-2 lg:py-0">
             <a
-              href="https://github.com/aatifahmad123"
+              href="https://github.com/om-nain"
               target="_blank"
-              className="underline  hover:text-gray-500"
+              className="underline hover:text-gray-500"
             >
-              Aatif Ahmad
-            </a>
-          </li>
-          <li className="py-2 lg:py-0">
-            <a
-              href="https://github.com/b22cs005"
-              target="_blank"
-              className="underline  hover:text-gray-500"
-            >
-              Khushi Agrawal
-            </a>
-          </li>
-          <li className="py-2 lg:py-0">
-            <a
-              href="https://github.com/ishitasancheti29"
-              target="_blank"
-              className="underline  hover:text-gray-500"
-            >
-              Ishita Sancheti
-            </a>
-          </li>
-          <li className="py-2 lg:py-0">
-            <a
-              href="https://github.com/ishitasancheti29"
-              target="_blank"
-              className="underline  hover:text-gray-500"
-            >
-              Aditi Rawat
+              Omprakash Nain
             </a>
           </li>
         </ul>
         <ul className="flex mt-3 mb-6 font-bold flex-wrap">
-          <li className=" hover:text-gray-500">
-            <a href="https://github.com/introspective321/ImRCIFAR">Github |</a>
+          <li className="hover:text-gray-500">
+            <a href="https://github.com/introspective321/DE_COVID_Classification">Github |</a>
           </li>
-          <li className=" hover:text-gray-500">
+          <li className="hover:text-gray-500">
             <a href="#Abstract">&nbsp;Abstract | </a>
           </li>
-          <li className=" hover:text-gray-500">
-            <a href="#Dataset"> &nbsp;Dataset | </a>
+          <li className="hover:text-gray-500">
+            <a href="#Dataset">&nbsp;Dataset | </a>
           </li>
-          <li className=" hover:text-gray-500">
-            <a href="#Challenges"> &nbsp;Challenges | </a>
+          <li className="hover:text-gray-500">
+            <a href="#Challenges">&nbsp;Challenges | </a>
           </li>
-          <li className=" hover:text-gray-500">
-            <a href="#Models"> &nbsp;Models | </a>
+          <li className="hover:text-gray-500">
+            <a href="#Models">&nbsp;Models | </a>
           </li>
-          <li className=" hover:text-gray-500">
-            <a href="#Results"> &nbsp;Results | </a>
+          <li className="hover:text-gray-500">
+            <a href="#Results">&nbsp;Results | </a>
           </li>
-          <li className=" hover:text-gray-500">
-            <a href="#Contribution"> &nbsp;Contribution | </a>
+          <li className="hover:text-gray-500">
+            <a href="#Contribution">&nbsp;Contribution | </a>
           </li>
-          <li className=" hover:text-gray-500">
-            <a href="#Takeaways"> &nbsp;Takeaways | </a>
+          <li className="hover:text-gray-500">
+            <a href="#Takeaways">&nbsp;Takeaways | </a>
           </li>
-          <li className=" hover:text-gray-500">
-            <a href="#References"> &nbsp;References</a>
+          <li className="hover:text-gray-500">
+            <a href="#References">&nbsp;References</a>
           </li>
         </ul>
       </div>
 
-      <div className="flex flex-col w-4/5 mx-auto mt-4 ">
-      <div class="py-2 flex justify-center">
+      <div className="flex flex-col w-4/5 mx-auto mt-4">
+        <div className="py-2 flex justify-center">
           <iframe
             width="560"
             height="315"
@@ -140,7 +111,6 @@ export default function Home() {
           <b>Keywords</b>: Image retrieval, CIFAR-10, Clustering,
           Classification, Model Performance
         </p>
-        
 
         <h2 className="text-2xl font-bold py-2" id="Dataset">
           Dataset
@@ -252,7 +222,7 @@ export default function Home() {
         </h2>
         <p>
           The majority of models produced accuracy scores in the range of 48-60
-          %. SVM with 'RBF' kernel produced an accuracy score of 61.04 %.The
+          %. SVM with 'RBF' kernel produced an accuracy score of 61.04 %. The
           results showed that deep learning models would definitely outperform
           traditional machine learning models on the CIFAR-10 dataset, achieving
           higher accuracy and better generalization. There were some models like
@@ -260,12 +230,12 @@ export default function Home() {
           assumptions about the data distribution given that the images have a
           property of having pixels not entirely independent.
         </p>
-        <Test></Test>
+        <Test />
         <h2 className="text-2xl font-bold py-2" id="Contribution">
           Contribution of Members
         </h2>
         <div className="flex justify-center p-4">
-          <Team></Team>
+          <Team />
         </div>
 
         <h2 className="text-2xl font-bold py-2" id="Takeaways">
@@ -289,7 +259,7 @@ export default function Home() {
           <li>
             <a
               href="https://www.cs.toronto.edu/~kriz/cifar.html"
-              className=" hover:text-gray-500"
+              className="hover:text-gray-500"
             >
               CIFAR-10 Dataset
             </a>
@@ -297,7 +267,7 @@ export default function Home() {
           <li>
             <a
               href="https://www.kaggle.com/c/cifar-10"
-              className=" hover:text-gray-500"
+              className="hover:text-gray-500"
             >
               Kaggle CIFAR-10 Competition
             </a>
@@ -305,7 +275,7 @@ export default function Home() {
           <li>
             <a
               href="https://www.tensorflow.org/datasets/catalog/cifar10"
-              className=" hover:text-gray-500"
+              className="hover:text-gray-500"
             >
               TensorFlow CIFAR-10 Dataset
             </a>
@@ -313,7 +283,7 @@ export default function Home() {
           <li>
             <a
               href="https://www.wiley.com/en-us/Pattern+Classification%2C+2nd+Edition-p-9780471056690"
-              className=" hover:text-gray-500"
+              className="hover:text-gray-500"
             >
               Pattern Classification by Duda, Hart, and Stork
             </a>
@@ -321,7 +291,7 @@ export default function Home() {
           <li>
             <a
               href="https://www.coursera.org/learn/machine-learning"
-              className=" hover:text-gray-500"
+              className="hover:text-gray-500"
             >
               Coursera Machine Learning Course by Andrew Ng
             </a>
@@ -329,20 +299,20 @@ export default function Home() {
           <li>
             <a
               href="https://scikit-learn.org/stable/"
-              className=" hover:text-gray-500"
+              className="hover:text-gray-500"
             >
               Scikit-Learn Documentation
             </a>
           </li>
           <li>
-            <a href="https://keras.io/" className=" hover:text-gray-500">
+            <a href="https://keras.io/" className="hover:text-gray-500">
               Keras Official Website
             </a>
           </li>
           <li>
             <a
               href="https://paperswithcode.com/sota/image-classification-on-cifar-10"
-              className=" hover:text-gray-500"
+              className="hover:text-gray-500"
             >
               Papers with Code - CIFAR-10 Image Classification
             </a>
@@ -352,28 +322,28 @@ export default function Home() {
           <a
             href="https://github.com/anandmishra22/PRML-Spring-2023"
             target="_blank"
-            className=" hover:text-gray-500"
+            className="hover:text-gray-500"
           >
-            © CSL2050 PRML Spring 2024
-          </a>{" "}
-          &nbsp;•&nbsp;{" "}
+            © CSL4030 DE Autumn 2024
+          </a>
+          &nbsp;•&nbsp;
           <a
             href="https://www.iitj.ac.in/"
             target="_blank"
-            className=" hover:text-gray-500"
+            className="hover:text-gray-500"
           >
             IIT Jodhpur
-          </a>{" "}
-          &nbsp;•&nbsp;{" "}
+          </a>
+          &nbsp;•&nbsp;
           <a
             href="https://new.reddit.com/user/Fuzzy_Weather1503"
             target="_blank"
-            className=" hover:text-gray-500"
+            className="hover:text-gray-500"
           >
-            Aatif Ahmad
-          </a>{" "}
+            Yashraj Chaturvedi
+          </a>
           &nbsp;•&nbsp;
-          <a href="#" className=" hover:text-gray-500">
+          <a href="#" className="hover:text-gray-500">
             Go to Top
           </a>
         </p>
