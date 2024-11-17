@@ -74,13 +74,9 @@ export default function Home() {
 
       <div className="flex flex-col w-4/5 mx-auto mt-4">
         <div className="py-2 flex justify-center">
-          <iframe
-            width="560"
-            height="315"
-            src="https://youtu.be/laYD201rK3k?si=mm2KmtQ3m1ooD2g2"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-          ></iframe>
+          <iframe width="914" height="514" src="https://www.youtube.com/embed/laYD201rK3k" title="E Jibon Madhu | Asha O Bhalobasha | Bengali Movie Song | Sharon Prabhakar" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+              
         </div>
         <h2 className="text-2xl font-bold py-2" id="Abstract">
           Abstract
