@@ -1,0 +1,204 @@
+# train_model.py
+
+import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score,
+    classification_report,
+)
+import pickle
+import os
+
+def load_data():
+    """
+    Load and return the dataset.
+    Replace the sample data with your actual data.
+    
+    Returns:
+        pd.DataFrame: The loaded dataset.
+    """
+    # Sample data: Replace this with your actual data loading mechanism (e.g., reading from a CSV)
+    data = {
+        'fullName': ['Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank', 'Grace', 'Heidi', 'Ivan', 'Judy'],
+        'age': [25, 30, 45, 35, 50, 28, 40, 38, 33, 29],
+        'gender': ['Female', 'Male', 'Male', 'Male', 'Female', 'Male', 'Female', 'Female', 'Male', 'Female'],
+        'phone': ['1234567890'] * 10,
+        'email': ['alice@example.com', 'bob@example.com', 'charlie@example.com', 'david@example.com', 
+                  'eve@example.com', 'frank@example.com', 'grace@example.com', 'heidi@example.com', 
+                  'ivan@example.com', 'judy@example.com'],
+        'consent': ['Yes'] * 10,
+        'date': pd.to_datetime(['2024-04-01'] * 10),
+        'symptoms_fever': [1, 0, 1, 0, 1, 1, 0, 1, 0, 1],
+        'symptoms_cough': [1, 1, 0, 0, 1, 0, 1, 1, 0, 1],
+        'symptoms_shortnessOfBreath': [0, 1, 1, 0, 1, 0, 1, 1, 0, 1],
+        'symptoms_fatigue': [1, 0, 1, 0, 1, 1, 0, 1, 0, 1],
+        'symptoms_lossOfTasteOrSmell': [1, 0, 1, 0, 1, 1, 0, 1, 0, 1],
+        'closeContact': [1, 0, 1, 0, 1, 1, 0, 1, 0, 1],
+        'receivedVaccine': ['No', 'Yes', 'No', 'Yes', 'No', 'No', 'Yes', 'No', 'Yes', 'No'],
+        'preExistingConditions_hasConditions': [1, 0, 1, 0, 1, 1, 0, 1, 0, 1],
+        'preExistingConditions_conditions': ['None', '', 'Diabetes', '', 'Hypertension', 'Asthma', '', 'None', '', 'Heart Disease'],
+        'physicalActivity': ['No', 'Yes', 'No', 'Yes', 'No', 'Yes', 'Yes', 'No', 'Yes', 'No'],
+        'consumedBeverages': ['Yes'] * 10,
+        'avgTemperature': [98.6, 97.5, 99.1, 97.8, 100.2, 99.5, 98.0, 100.5, 97.9, 100.0],
+        'temperatureVariance': [0.5, 0.3, 0.7, 0.2, 1.0, 0.6, 0.4, 1.2, 0.3, 1.1],
+        'hotspotsCount': [2, 0, 3, 1, 4, 3, 1, 5, 0, 4],
+        'label': ['Unhealthy', 'Healthy', 'Unhealthy', 'Healthy', 'Unhealthy', 
+                  'Unhealthy', 'Healthy', 'Unhealthy', 'Healthy', 'Unhealthy']
+    }
+    df = pd.DataFrame(data)
+    return df
+
+def preprocess_data(df):
+    """
+    Preprocess the dataset:
+    - Handle missing values.
+    - Encode categorical variables.
+    - Separate features and target.
+    
+    Args:
+        df (pd.DataFrame): Raw DataFrame.
+        
+    Returns:
+        X (pd.DataFrame): Features.
+        y (pd.Series): Target variable.
+    """
+    # Drop rows with missing values
+    df = df.dropna()
+    
+    # Encode categorical variables
+    # Encode 'gender' as binary: Male=1, Female=0
+    df['gender'] = df['gender'].map({'Male': 1, 'Female': 0})
+    
+    # Encode 'receivedVaccine' and 'physicalActivity' as binary
+    df['receivedVaccine'] = df['receivedVaccine'].map({'Yes': 1, 'No': 0})
+    df['physicalActivity'] = df['physicalActivity'].map({'Yes': 1, 'No': 0})
+    
+    # Encode 'label' as binary: Healthy=0, Unhealthy=1
+    df['label'] = df['label'].map({'Healthy': 0, 'Unhealthy': 1})
+    
+    # Handle 'preExistingConditions_conditions'
+    # Create a binary feature indicating presence of conditions
+    df['preExistingConditions_presence'] = df['preExistingConditions_conditions'].apply(lambda x: 1 if x.strip() else 0)
+    
+    # Features and target
+    feature_columns = [
+        'symptoms_fever',
+        'symptoms_cough',
+        'symptoms_shortnessOfBreath',
+        'symptoms_fatigue',
+        'symptoms_lossOfTasteOrSmell',
+        'closeContact',
+        'receivedVaccine',
+        'preExistingConditions_hasConditions',
+        'preExistingConditions_presence',
+        'physicalActivity',
+        'consumedBeverages',
+        'avgTemperature',
+        'temperatureVariance',
+        'hotspotsCount',
+        'gender',
+        'age'
+    ]
+    
+    X = df[feature_columns]
+    y = df['label']
+    
+    return X, y
+
+def train_model(X, y):
+    """
+    Train the RandomForestClassifier.
+    
+    Args:
+        X (pd.DataFrame): Features.
+        y (pd.Series): Target variable.
+        
+    Returns:
+        clf (RandomForestClassifier): Trained classifier.
+        X_test (pd.DataFrame): Test features.
+        y_test (pd.Series): Test target.
+        y_pred (np.ndarray): Predictions on test set.
+    """
+    # Split the data
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42, stratify=y
+    )
+    
+    # Initialize and train the model
+    clf = RandomForestClassifier(n_estimators=100, random_state=42)
+    clf.fit(X_train, y_train)
+    
+    # Predictions
+    y_pred = clf.predict(X_test)
+    
+    return clf, X_test, y_test, y_pred
+
+def evaluate_model(y_test, y_pred):
+    """
+    Evaluate the model's performance.
+    
+    Args:
+        y_test (pd.Series): True labels.
+        y_pred (np.ndarray): Predicted labels.
+        
+    Prints:
+        Accuracy, Precision, Recall, F1-Score, and Classification Report.
+    """
+    accuracy = accuracy_score(y_test, y_pred)
+    precision = precision_score(y_test, y_pred, zero_division=0)
+    recall = recall_score(y_test, y_pred, zero_division=0)
+    f1 = f1_score(y_test, y_pred, zero_division=0)
+    
+    print("Model Evaluation Metrics:")
+    print(f"Accuracy : {accuracy * 100:.2f}%")
+    print(f"Precision: {precision * 100:.2f}%")
+    print(f"Recall   : {recall * 100:.2f}%")
+    print(f"F1-Score : {f1 * 100:.2f}%\n")
+    
+    print("Detailed Classification Report:")
+    print(classification_report(y_test, y_pred, target_names=['Healthy', 'Unhealthy'], zero_division=0))
+
+def serialize_model(clf, model_path='model.pkl'):
+    """
+    Serialize the trained model to a pickle file.
+    
+    Args:
+        clf (RandomForestClassifier): Trained classifier.
+        model_path (str): Path to save the pickle file.
+    """
+    with open(model_path, 'wb') as f:
+        pickle.dump(clf, f)
+    print(f"Model serialized to '{model_path}'.")
+
+def main():
+    """
+    Main function to execute the training and serialization process.
+    """
+    # Load data
+    print("Loading data...")
+    df = load_data()
+    
+    # Preprocess data
+    print("Preprocessing data...")
+    X, y = preprocess_data(df)
+    
+    # Train model
+    print("Training model...")
+    clf, X_test, y_test, y_pred = train_model(X, y)
+    
+    # Evaluate model
+    print("Evaluating model...")
+    evaluate_model(y_test, y_pred)
+    
+    # Serialize model
+    print("Serializing model...")
+    serialize_model(clf, 'model.pkl')
+    
+    print("Training and serialization complete.")
+
+if __name__ == "__main__":
+    main()
