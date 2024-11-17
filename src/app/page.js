@@ -215,9 +215,9 @@ export default function Home() {
         </p>
         <figure>
           <img
-            src="path-to-your-thermal-image-representation.png"
+            src="public/images/data.jpg"
             alt="Thermal Images of Participants"
-            className="h-80 w-80 py-2 mx-auto block"
+            className="h-80 w-160 py-2 mx-auto block"
           ></img>
           <figcaption className="text-center text-gray-700">
             Figure 1: Thermal Images Captured from Four Positions (Front, Back, Left, and Right)
