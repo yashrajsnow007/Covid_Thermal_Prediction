@@ -1,8 +1,8 @@
-// test.js
+// src/app/test/page.js
 "use client";
 
 import React, { useEffect } from "react";
-import { useRouter } from "next/navigation"; // Correct import for Next.js App Directory
+import { useRouter } from "next/navigation"; // Correct import for App Directory
 
 export default function Test() {
   const router = useRouter();
