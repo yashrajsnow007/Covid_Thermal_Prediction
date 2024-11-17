@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation"; // Correct import for App Directory
 
 export default function Test() {
-  const router = useRouter(); 
+  const router = useRouter();
 
   useEffect(() => {
     // Function to run the model
@@ -47,7 +47,7 @@ export default function Test() {
         !gender ||
         !phone.trim() ||
         !email.trim() ||
-        !consent ||
+        !consent || // Updated condition
         !date ||
         !closeContact ||
         !receivedVaccine ||
@@ -147,7 +147,7 @@ export default function Test() {
       // Calculate confidence score
       const confidenceScore = ((cumulativeRiskScore / maxRiskScore) * 100).toFixed(2);
 
-      // Generate feedback
+      // Generate feedback based on prediction and score
       let feedback = "";
       if (prediction === "Healthy") {
         feedback =
@@ -169,6 +169,10 @@ export default function Test() {
       };
 
       localStorage.setItem("predictionResults", JSON.stringify(results));
+
+      // Optionally, clear survey and image data to prevent re-use
+      // localStorage.removeItem("uploadedImage");
+      // localStorage.removeItem("surveyAnswers");
 
       // Redirect the user back to the main page
       alert("Model has been run successfully. You can view the results now.");
