@@ -170,9 +170,6 @@ export default function Test() {
 
       localStorage.setItem("predictionResults", JSON.stringify(results));
 
-      // Optionally, clear survey and image data to prevent re-use
-      // localStorage.removeItem("uploadedImage");
-      // localStorage.removeItem("surveyAnswers");
 
       // Redirect the user back to the main page
       alert("Model has been run successfully. You can view the results now.");
