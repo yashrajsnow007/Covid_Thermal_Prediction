@@ -86,94 +86,87 @@ export default function Home() {
           Abstract
         </h2>
         <p>
-          Image retrieval is important in various applications that allows users
-          to search and retrieve relevant images with ease. In our project, we
-          focused on image retrieval using traditional machine learning
-          techniques on the CIFAR-10 dataset which consist of 60,000 colored
-          images from ten classes. We have tried classical ML methods like
-          classification and clustering based techniques for effective retrieval
-          of the best pictures. At initial stages after data visualization and
-          feature extraction we used Single-layer perceptrons, K-nearest
-          neighbors, Naive Bayes, Logistic Regression, Random forests which gave
-          us a good insights along-with with accuracies ranging between 33% and
-          55%. In the later stages of this project we implemented Support vector
-          machines and Multi-layer perceptrons(MLP) to improve model
-          performance. Although the scratch version of SVM was working good on
-          other data sets, it failed badly on CIFAR-10 so we did a failure-case
-          analysis for that and went ahead with sklearn SVM. To manage dataset
-          complexity issues we used techniques such as PCA and K-Means were but
-          finally proceeded with PCA. This project helped us in understanding
-          image retrieval techniques and handling complex & large datasets,
-          aiming to identify effective strategies for real-world applications in
-          a concise yet comprehensive manner.
+        The Covid-19 pandemic has emphasized the importance of rapid and reliable health
+        assessments. In our project, we developed a system for classifying individuals as
+        healthy or unhealthy using thermal image data combined with clinical information. 
+        The dataset, sourced from PhysioNet, includes thermal videos captured from four 
+        positions (front, back, left, and right), along with associated clinical and demographic 
+        data such as vital signs, symptoms, and previous exposure details.
         </p>
-        <p className="py-2">
-          <b>Keywords</b>: Image retrieval, CIFAR-10, Clustering,
-          Classification, Model Performance
+        <p>
+          We employed an ETL pipeline to preprocess the raw data, ensuring reliability through 
+          cleaning, normalization, and validation checks. For classification, we utilized a 
+          multi-modal approach integrating tabular and image data. Machine learning models 
+          like Random Forests, XGBoost, Multilayer Perceptrons (MLPs), and Convolutional Neural 
+          Networks (CNNs) were tested. Experimental results demonstrated the superior performance 
+          of multi-modal models over single modalities, with Random Forests and XGBoost achieving 
+          the best results in Covid-19 detection.
         </p>
+          <p>
+            The system architecture was designed for scalability, employing Docker for containerized 
+            execution and Elasticsearch for efficient indexing and querying. This project not only 
+            addresses the challenge of reliable data processing but also provides an extensible 
+            framework for real-world healthcare applications.
+          </p>
+          <p className="py-2">
+            <b>Keywords</b>: Covid-19 Classification, Thermal Images, ETL Pipeline, Multi-Modal Approach, Machine Learning
+          </p>
 
-        <h2 className="text-2xl font-bold py-2" id="Dataset">
-          Dataset
-        </h2>
-        <p>
-          The dataset used in this project is the CIFAR-10 dataset. The CIFAR-10
-          dataset consists of 60000 32x32 colour images in 10 classes, with 6000
-          images per class. There are 50000 training images and 10000 test
-          images. It was created by researchers at the Canadian Institute for
-          Advanced Research (CIFAR) as a benchmark for evaluating machine
-          learning algorithms and models for image classification tasks. It was
-          released in 2009 and has since become one of the most popular datasets
-          for image classification research. The following are the classes in
-          the CIFAR-10 dataset:
-        </p>
-        <ul className="py-2 flex flex-wrap gap-4 mx-auto">
-          <li>
-            <b>Airplane</b>
-          </li>
-          <li>
-            <b>Automobile</b>
-          </li>
-          <li>
-            <b>Bird</b>
-          </li>
-          <li>
-            <b>Cat</b>
-          </li>
-          <li>
-            <b>Deer</b>
-          </li>
-          <li>
-            <b>Dog</b>
-          </li>
-          <li>
-            <b>Frog</b>
-          </li>
-          <li>
-            <b>Horse</b>
-          </li>
-          <li>
-            <b>Ship</b>
-          </li>
-          <li>
-            <b>Truck</b>
-          </li>
-        </ul>
-        <p>
-          The images in the CIFAR-10 dataset were collected from a variety of
-          sources, including web searches, image repositories, and image-sharing
-          platforms. Each image was manually labelled with one of the 10 class
-          labels by human annotators.
-        </p>
-        <figure>
-          <img
-            src="https://storage.googleapis.com/kaggle-media/competitions/kaggle/3649/media/cifar-10.png"
-            alt="CIFAR-10 Images"
-            className="h-80 w-80 py-2 mx-auto block"
-          ></img>
-          <figcaption className="text-center text-gray-700">
-            Figure 1: Sample Images from the CIFAR-10 Dataset
-          </figcaption>
-        </figure>
+
+
+
+
+
+          <h2 className="text-2xl font-bold py-2" id="Dataset">
+  Dataset
+</h2>
+<p>
+  The dataset used in this project is the Covid-19 thermal image dataset sourced from 
+  <a href="https://physionet.org/content/covid-19-thermal/1.0/" className="text-blue-500 underline">
+    PhysioNet
+  </a>. This dataset contains upper body thermal images along with clinical and demographic data for 
+  251 subjects. Out of these, 192 subjects tested Covid-19 negative, and 59 tested Covid-19 positive. 
+  Thermal videos were recorded in four positions: front, back, left, and right, capturing comprehensive 
+  imaging data for each participant.
+</p>
+<p>
+  The dataset includes the following key components:
+</p>
+<ul className="py-2 flex flex-wrap gap-4 mx-auto">
+  <li><b>Participant Information:</b> ID, age, gender, weight, height, and last menstruation (if applicable).</li>
+  <li><b>Vital Signs:</b> Temperature, blood pressure, cardiac rate, O<sub>2</sub> saturation, and respiratory rate.</li>
+  <li><b>Symptoms:</b> Fever, cough, throat pain, smell/taste loss, and other common Covid-19 symptoms.</li>
+  <li><b>Exposure History:</b> Contacts at home, work, or hospital environments.</li>
+  <li><b>Thermal Imaging:</b> Videos and extracted features (signal moments, textures) for each position (front, back, left, right).</li>
+  <li><b>Covid-19 Diagnosis:</b> PCR test results, including estimated viral load.</li>
+</ul>
+<p>
+  The thermal imaging data was preprocessed using MATLAB scripts to convert videos into image frames 
+  suitable for analysis. Each frame was standardized to ensure consistency in resolution and quality. 
+  Clinical data, such as symptoms and vitals, was stored in tabular format for integration with imaging features.
+</p>
+<figure>
+  <img
+    src="path-to-your-thermal-image-representation.png"
+    alt="Thermal Images of Participants"
+    className="h-80 w-80 py-2 mx-auto block"
+  ></img>
+  <figcaption className="text-center text-gray-700">
+    Figure 1: Thermal Images Captured from Four Positions (Front, Back, Left, and Right)
+  </figcaption>
+</figure>
+<p>
+  This dataset is a valuable resource for developing machine learning models to classify Covid-19 health status 
+  by integrating thermal imaging and clinical data. It provides a comprehensive representation of diverse 
+  medical, environmental, and imaging factors.
+</p>
+
+
+
+
+
+
+
 
         <h2 className="text-2xl font-bold py-2" id="Challenges">
           Challenges
