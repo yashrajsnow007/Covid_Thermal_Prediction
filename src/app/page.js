@@ -215,7 +215,7 @@ export default function Home() {
         </p>
         <figure>
           <img
-            src="public/images/data.jpg"
+            src="/images/data.jpg"
             alt="Thermal Images of Participants"
             className="h-80 w-160 py-2 mx-auto block"
           ></img>
