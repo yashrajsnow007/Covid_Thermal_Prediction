@@ -116,7 +116,7 @@ export default function Team() {
         <div className="h-60 w-60 bg-slate-400 rounded-md hover:bg-slate-300">
           <div className="h-2/3">
             <img
-              src="/images/AA.jpeg"
+              src="/images/om.jpg"
               alt="Omprakash Nain"
               className="rounded-md object-cover w-full h-full"
             />
