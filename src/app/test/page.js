@@ -47,12 +47,13 @@ export default function Test() {
         !gender ||
         !phone.trim() ||
         !email.trim() ||
-        !consent || // Updated condition
+        !consent ||
         !date ||
         !closeContact ||
         !receivedVaccine ||
         !preExistingConditions.hasConditions ||
-        (preExistingConditions.hasConditions === "Yes" && !preExistingConditions.conditions.trim()) ||
+        (preExistingConditions.hasConditions === "Yes" &&
+          !preExistingConditions.conditions.trim()) ||
         !physicalActivity ||
         !consumedBeverages
       ) {
@@ -61,54 +62,105 @@ export default function Test() {
         return;
       }
 
-      // Example prediction logic
+      // Prediction logic with weighted scoring
+      let cumulativeRiskScore = 0;
+      let maxRiskScore = 0; // For calculating confidence score
       let prediction = "Healthy";
-      let riskFactors = 0;
 
-      // Analyze Symptoms
-      if (symptoms.noneOfTheAbove) {
-        prediction = "Healthy";
-      } else {
-        const activeSymptoms = [
-          symptoms.fever,
-          symptoms.cough,
-          symptoms.shortnessOfBreath,
-          symptoms.fatigue,
-          symptoms.lossOfTasteOrSmell,
-        ];
-        if (activeSymptoms.some((symptom) => symptom)) {
-          prediction = "Unhealthy";
-          riskFactors += activeSymptoms.filter((symptom) => symptom).length;
+      // Define weights for symptoms
+      const symptomWeights = {
+        fever: 2,
+        cough: 1.5,
+        shortnessOfBreath: 2.5,
+        fatigue: 1,
+        lossOfTasteOrSmell: 2,
+      };
+
+      // Calculate maximum possible risk score from symptoms
+      for (const weight of Object.values(symptomWeights)) {
+        maxRiskScore += weight;
+      }
+
+      // Calculate risk score from symptoms
+      for (const symptom in symptomWeights) {
+        if (symptoms[symptom]) {
+          cumulativeRiskScore += symptomWeights[symptom];
         }
       }
 
-      // Analyze Other Factors
-      if (closeContact === "Yes") riskFactors += 2;
-      if (receivedVaccine === "No") riskFactors += 1;
-      if (preExistingConditions.hasConditions === "Yes") riskFactors += 2;
-      if (physicalActivity === "Yes") riskFactors += 0; // Physical activity might reduce risk
-      if (consumedBeverages === "Yes") riskFactors += 0; // Assuming neutral
+      // Other factors and their weights
+      const factorWeights = {
+        closeContact: 3,
+        receivedVaccine: { Yes: -1, No: 1 },
+        preExistingConditions: 2,
+        physicalActivity: { Yes: -0.5, No: 0.5 },
+        consumedBeverages: 0.5,
+      };
 
-      // Adjust prediction based on risk factors
-      if (riskFactors >= 3) {
-        prediction = "Unhealthy";
+      // Close Contact
+      maxRiskScore += factorWeights.closeContact;
+      if (closeContact === "Yes") {
+        cumulativeRiskScore += factorWeights.closeContact;
       }
 
-      // Generate a mock score based on risk factors
-      const score = Math.min(riskFactors * 15, 100); // Max score capped at 100
+      // Received Vaccine
+      maxRiskScore += Math.abs(factorWeights.receivedVaccine.No);
+      if (receivedVaccine === "Yes") {
+        cumulativeRiskScore += factorWeights.receivedVaccine.Yes;
+      } else if (receivedVaccine === "No") {
+        cumulativeRiskScore += factorWeights.receivedVaccine.No;
+      }
 
-      // Generate feedback based on prediction and score
+      // Pre-existing Conditions
+      maxRiskScore += factorWeights.preExistingConditions;
+      if (preExistingConditions.hasConditions === "Yes") {
+        cumulativeRiskScore += factorWeights.preExistingConditions;
+      }
+
+      // Physical Activity
+      maxRiskScore += Math.abs(factorWeights.physicalActivity.No);
+      if (physicalActivity === "Yes") {
+        cumulativeRiskScore += factorWeights.physicalActivity.Yes;
+      } else if (physicalActivity === "No") {
+        cumulativeRiskScore += factorWeights.physicalActivity.No;
+      }
+
+      // Consumed Beverages
+      maxRiskScore += factorWeights.consumedBeverages;
+      if (consumedBeverages === "Yes") {
+        cumulativeRiskScore += factorWeights.consumedBeverages;
+      }
+
+      // Ensure cumulativeRiskScore is not negative
+      cumulativeRiskScore = Math.max(0, cumulativeRiskScore);
+
+      // Determine threshold (e.g., 50% of maxRiskScore)
+      const threshold = maxRiskScore * 0.5;
+
+      // Determine prediction
+      if (cumulativeRiskScore >= threshold) {
+        prediction = "Unhealthy";
+      } else {
+        prediction = "Healthy";
+      }
+
+      // Calculate confidence score
+      const confidenceScore = ((cumulativeRiskScore / maxRiskScore) * 100).toFixed(2);
+
+      // Generate feedback
       let feedback = "";
       if (prediction === "Healthy") {
-        feedback = "You seem to be healthy! Continue maintaining your health practices.";
+        feedback =
+          "You seem to be healthy! Continue maintaining your health practices.";
       } else {
-        feedback = "Based on your responses, you may be at risk. Please consult a healthcare provider for further evaluation.";
+        feedback =
+          "Based on your responses, you may be at risk. Please consult a healthcare provider for further evaluation.";
       }
 
       // Store the results in Local Storage
       const results = {
         prediction,
-        score,
+        confidenceScore,
         feedback,
         date, // Optionally store the date of the prediction
         name: fullName,
@@ -117,10 +169,6 @@ export default function Test() {
       };
 
       localStorage.setItem("predictionResults", JSON.stringify(results));
-
-      // Optionally, clear survey and image data to prevent re-use
-      // localStorage.removeItem("uploadedImage");
-      // localStorage.removeItem("surveyAnswers");
 
       // Redirect the user back to the main page
       alert("Model has been run successfully. You can view the results now.");
