@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation"; // Correct import for App Directory
 
 export default function Test() {
-  const router = useRouter();
+  const router = useRouter(); 
 
   useEffect(() => {
     // Function to run the model
