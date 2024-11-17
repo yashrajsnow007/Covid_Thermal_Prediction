@@ -127,7 +127,7 @@ export default function Team() {
             <ul className="flex gap-2">
               <li>
                 <a
-                  href="https://github.com/aatifahmad123"
+                  href="https://github.com/om-nain"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
