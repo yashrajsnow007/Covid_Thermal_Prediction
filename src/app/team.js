@@ -93,12 +93,12 @@ export default function Team() {
         <div className="h-2/3">
             <img
             src="/images/AA.jpeg"
-            alt="Aatif Ahmad"
+            alt="Omprakash Nain"
             className="rounded-md object-cover w-full h-full"
           />
             </div>
           <div className="flex flex-col items-center">
-            <h1 className="text-1xl">Aatif Ahmad</h1>
+            <h1 className="text-1xl">Omprakash Nain</h1>
             <p>Naive Bayes, SVM</p>
             <ul className="flex gap-2">
               <li>
