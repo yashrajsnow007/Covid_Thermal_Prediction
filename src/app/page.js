@@ -168,61 +168,91 @@ export default function Home() {
 
 
 
-        <h2 className="text-2xl font-bold py-2" id="Challenges">
-          Challenges
-        </h2>
-        <p>
-          Despite its popularity, the CIFAR-10 dataset presents several
-          challenges for machine learning algorithms, including:
-        </p>
-        <ul className="py-2">
-          <li>
-            <b>Low-Resolution Images</b>: The small size (32x32 pixels) of the
-            images makes it more challenging to extract meaningful features.
-          </li>
-          <li>
-            <b>Noisy Images</b>: The images in the CIFAR-10 dataset are often
-            noisy, which can make it difficult for models to learn the
-            underlying patterns.
-          </li>
-          <li>
-            <b>Similar Classes</b>: Some classes in CIFAR-10 (e.g., cat and dog)
-            share similar visual features, leading to higher classification
-            difficulty.
-          </li>
-          <li>
-            <b>Limited Diversity</b>: The dataset contains a limited variety of
-            objects compared to real-world scenarios, which may limit the
-            generalization ability of models trained on CIFAR-10.
-          </li>
-        </ul>
-        <h2 className="text-2xl font-bold py-2" id="Models">
-          Models Implemented
-        </h2>
-        <p>
-          We implemented almost all the machine learning models encompassing all
-          the topics taught during the course. This covers techniques involving
-          both supervised and unsupervised learning. For dimensionality
-          reduction, we implemented PCA. We also implemented K-means clustering
-          for unsupervised learning. For supervised learning, we implemented
-          Decision Trees, Random Forest, SVM, Naive Bayes, KNN, ANN, and
-          Perceptron. Logistic Regression was also implemented. Emphasis was
-          laid on implementing the models from scratch to get a better
-          understanding of the mathematics involved.
-        </p>
-        <h2 className="text-2xl font-bold py-2" id="Results">
-          Results
-        </h2>
-        <p>
-          The majority of models produced accuracy scores in the range of 48-60
-          %. SVM with 'RBF' kernel produced an accuracy score of 61.04 %. The
-          results showed that deep learning models would definitely outperform
-          traditional machine learning models on the CIFAR-10 dataset, achieving
-          higher accuracy and better generalization. There were some models like
-          Naive Bayes which performed poorly on the dataset due to its inherent
-          assumptions about the data distribution given that the images have a
-          property of having pixels not entirely independent.
-        </p>
+<h2 className="text-2xl font-bold py-2" id="Challenges">
+  Challenges
+</h2>
+<p>
+  While implementing the ETL pipeline and managing multi-modal healthcare data, several challenges were encountered:
+</p>
+<ul className="py-2">
+  <li>
+    <b>Data Quality Issues:</b> The raw dataset contained missing values, inconsistent formats, and outliers in both thermal image metadata and clinical records, necessitating extensive cleaning and validation steps.
+  </li>
+  <li>
+    <b>Integration of Multi-Modal Data:</b> Combining structured tabular data with unstructured thermal image data required careful normalization and feature extraction to maintain compatibility across the pipeline.
+  </li>
+  <li>
+    <b>Handling Large Volumes of Data:</b> Thermal videos and metadata generated a substantial amount of data, which demanded optimized storage solutions and efficient query mechanisms.
+  </li>
+  <li>
+    <b>Elasticsearch Configuration:</b> Setting up Elasticsearch for real-time querying and advanced indexing posed challenges in ensuring schema compatibility and query performance.
+  </li>
+  <li>
+    <b>Docker Deployment:</b> Containerizing the entire pipeline and ensuring seamless operation across environments required overcoming dependency conflicts and deployment errors.
+  </li>
+</ul>
+<p>
+  These challenges were addressed through iterative development, extensive testing, and leveraging modern data engineering tools and practices. The experience highlighted the importance of robust validation mechanisms, efficient data storage, and modular pipeline design.
+</p>
+
+
+
+
+        <h2 className="text-2xl font-bold py-2" id="Technologies">
+  Technologies Used
+</h2>
+<p>
+  Our project focused heavily on data engineering principles to preprocess, store, and retrieve multi-modal datasets efficiently. The entire pipeline was designed for scalability, portability, and robust data handling, leveraging a modern tech stack.
+</p>
+<p>
+  For data preprocessing, we implemented a comprehensive ETL (Extract, Transform, Load) pipeline:
+</p>
+<ul className="py-2">
+  <li><b>Data Ingestion:</b> Raw thermal image videos and clinical data were collected from public datasets and converted into structured formats.</li>
+  <li><b>Data Cleaning:</b> Addressed missing values, ensured consistency in clinical records, and standardized data formats.</li>
+  <li><b>Data Normalization:</b> Tabular data was organized into normalized tables for efficient storage in a relational database.</li>
+  <li><b>Data Validation:</b> Ensured data quality and integrity through outlier detection and reliability checks.</li>
+</ul>
+<p>
+  For data storage, we used:
+</p>
+<ul className="py-2">
+  <li><b>Dockerized MySQL:</b> A relational database was used to store structured tabular data, ensuring data consistency and easy integration.</li>
+  <li><b>Elasticsearch:</b> Configured for advanced indexing and full-text search to facilitate quick retrieval of thermal image metadata and clinical information.</li>
+</ul>
+<p>
+  Docker was a critical component, enabling containerization of the ETL pipeline, MySQL database, and Elasticsearch setup. This ensured portability across environments, streamlined deployment, and scalability for future expansions.
+</p>
+<p>
+  The ETL pipeline was automated to process raw data into structured formats, ensuring high efficiency and reliability. It included features like automated data ingestion, error logging, and modular execution for each processing step.
+</p>
+<p>
+  The frontend of the application provides a simple interface for users to upload thermal images and input survey responses. This data is processed by the backend, which integrates the database and search systems seamlessly.
+</p>
+
+
+
+
+
+
+<h2 className="text-2xl font-bold py-2" id="Results">
+  Results
+</h2>
+<p>
+  The implementation of the ETL pipeline and associated technologies yielded a robust and scalable data processing framework. The pipeline successfully transformed raw thermal image data and clinical records into structured formats, ensuring high reliability and usability. The integration of Dockerized MySQL for tabular data storage and Elasticsearch for advanced indexing enabled seamless data retrieval and querying capabilities.
+</p>
+<p>
+  The ETL pipeline achieved the following milestones:
+</p>
+<ul className="py-2">
+  <li><b>Data Processing:</b> Processed raw data from thermal image videos and clinical CSV files into a structured, normalized format suitable for storage and analysis.</li>
+  <li><b>Automation:</b> Automated the data ingestion, cleaning, and loading process, significantly reducing manual intervention.</li>
+  <li><b>Storage Efficiency:</b> Successfully stored and managed large datasets in a relational database with optimized queries for retrieval.</li>
+  <li><b>Query Performance:</b> Elasticsearch integration enabled advanced, real-time querying, including full-text searches and filtering by clinical parameters.</li>
+</ul>
+<p>
+  The project demonstrated the effectiveness of combining a relational database with a search engine for handling multi-modal datasets. The user-facing interface enabled smooth data upload and processing workflows. This framework serves as a scalable solution for future data engineering projects, particularly in the healthcare domain.
+</p>
 
 
 
@@ -232,7 +262,7 @@ export default function Home() {
 
 
 
-        
+
         <h2 className="text-2xl font-bold py-2" id="Contribution">
           Contribution of Members
         </h2>
