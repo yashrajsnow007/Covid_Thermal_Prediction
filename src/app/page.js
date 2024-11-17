@@ -257,6 +257,15 @@ export default function Home() {
           These challenges were addressed through iterative development, extensive testing, and leveraging modern data engineering tools and practices. The experience highlighted the importance of robust validation mechanisms, efficient data storage, and modular pipeline design.
         </p>
 
+
+
+
+
+
+
+
+
+
         {/* Technologies Used Section */}
         <h2 className="text-2xl font-bold py-2" id="Technologies">
           Technologies Used
@@ -289,6 +298,49 @@ export default function Home() {
         <p>
           The frontend of the application provides a simple interface for users to upload thermal images and input survey responses. This data is processed by the backend, which integrates the database and search systems seamlessly.
         </p>
+
+
+
+
+{/* Results Section */}
+<h2 className="text-2xl font-bold py-2" id="Results">
+  Results
+</h2>
+<p>
+  The project demonstrated the effectiveness of a multi-modal approach for Covid-19 detection. The ETL pipeline successfully processed thermal images and tabular clinical data, enabling efficient storage, retrieval, and analysis.
+</p>
+<ul className="py-2">
+  <li><b>Pipeline Performance:</b> Automated data processing reduced errors and ensured data consistency.</li>
+  <li><b>Model Accuracy:</b> XGBoost achieved the highest AUROC test score of <b>0.91</b>, demonstrating the strength of combining thermal images with clinical data.</li>
+  <li><b>Data Scalability:</b> Dockerized MySQL and Elasticsearch enabled robust data handling and real-time querying capabilities.</li>
+</ul>
+<figure className="py-4">
+  <img
+    src="images/results_ML.png"
+    alt="AUROC Results Using XGBoost with Tabular Medical Data"
+    className="w-full h-auto mx-auto"
+  />
+  <figcaption className="text-center text-gray-700">
+    Figure: Multi-Modal COVID-19 Detection AUROC Results using XGBoost with Tabular Medical Data
+  </figcaption>
+</figure>
+<p>
+  These results emphasize the potential of integrating diverse data sources to enhance healthcare diagnostics. The project provides a scalable framework for real-world applications, highlighting the critical role of modern data engineering and machine learning technologies.
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         {/* Image Upload Section */}
         <section className="mt-8 w-full">
