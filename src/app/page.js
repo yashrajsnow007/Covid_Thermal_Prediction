@@ -121,7 +121,7 @@ export default function Home() {
   Dataset
 </h2>
 <p>
-  The dataset used in this project is the Covid-19 thermal image dataset sourced from  
+  The dataset used in this project is the Covid-19 thermal image dataset sourced from:-
   <a href="https://physionet.org/content/covid-19-thermal/1.0/" className="text-blue-500 underline">
     PhysioNet
   </a>. This dataset contains upper body thermal images along with clinical and demographic data for 
