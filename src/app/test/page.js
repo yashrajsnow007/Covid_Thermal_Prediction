@@ -145,7 +145,7 @@ export default function Test() {
       }
 
       // Calculate confidence score
-      const confidenceScore = ((cumulativeRiskScore / maxRiskScore) * 100).toFixed(2);
+      const score = ((cumulativeRiskScore / maxRiskScore) * 100).toFixed(2);
 
       // Generate feedback based on prediction and score
       let feedback = "";
@@ -160,7 +160,7 @@ export default function Test() {
       // Store the results in Local Storage
       const results = {
         prediction,
-        confidenceScore,
+        score, // Ensuring the key is 'score' to match your display code
         feedback,
         date, // Optionally store the date of the prediction
         name: fullName,
@@ -170,6 +170,9 @@ export default function Test() {
 
       localStorage.setItem("predictionResults", JSON.stringify(results));
 
+      // Optionally, clear survey and image data to prevent re-use
+      // localStorage.removeItem("uploadedImage");
+      // localStorage.removeItem("surveyAnswers");
 
       // Redirect the user back to the main page
       alert("Model has been run successfully. You can view the results now.");
