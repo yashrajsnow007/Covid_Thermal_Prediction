@@ -13,7 +13,7 @@ export default function Team() {
           </div>
           <div className="flex flex-col items-center">
             <h1 className="text-1xl">Anushk Gupta</h1>
-            <p>Perceptron, ANN</p>
+            <p> </p>
             <ul className="flex gap-2">
               <li>
                 <a
@@ -68,7 +68,7 @@ export default function Team() {
           </div>
           <div className="flex flex-col items-center">
             <h1 className="text-1xl">Yashraj Chaturvedi</h1>
-            <p>Decision Tree, SVM</p>
+            <p> </p>
             <ul className="flex gap-2">
               <li>
                 <a
@@ -123,7 +123,7 @@ export default function Team() {
           </div>
           <div className="flex flex-col items-center">
             <h1 className="text-1xl">Omprakash Nain</h1>
-            <p>Naive Bayes, SVM</p>
+            <p> </p>
             <ul className="flex gap-2">
               <li>
                 <a
