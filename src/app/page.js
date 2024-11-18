@@ -156,7 +156,7 @@ export default function Home() {
     {/* Canva Presentation Embed */}
     <div className="relative" style={{ paddingTop: '56.25%' /* 16:9 Aspect Ratio */ }}>
       <iframe
-        src="https://www.canva.com/design/DAGWJ6tQehs/xO8T-N89Nn8hvNvBuxHvJw/edit?utm_content=DAGWJ6tQehs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" 
+        src="https://www.canva.com/design/DAGWJ6tQehs/1D5YkF4gbExu3YiCIhUSCw/view" 
         title="My Canva Presentation"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
