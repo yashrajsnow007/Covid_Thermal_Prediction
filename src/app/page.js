@@ -2,8 +2,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-
-
 import { useRouter } from "next/navigation"; // Correct import for App Directory
 import Team from "./team"; // Ensure you have a Team component at src/app/team.js
 
@@ -154,19 +152,37 @@ export default function Home() {
         </ul>
       </div>
 
-  <div className="flex flex-col w-full mx-auto mt-4">
-    {/* Canva Presentation Embed */}
-    <div className="relative" style={{ paddingTop: '56.25%' /* 16:9 Aspect Ratio */ }}>
-      <iframe
-        src="https://www.canva.com/design/DAGWJ6tQehs/1D5YkF4gbExu3YiCIhUSCw/view" 
-        title="My Canva Presentation"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
-        className="absolute top-0 left-0 w-full h-full"
-      ></iframe>
-    </div>
-  </div>
+
+
+
+
+
+      <div className="flex flex-col w-4/5 mx-auto mt-4">
+
+
+      
+{/* Canva Embed */}
+<div className="py-2 flex justify-center">
+  <iframe
+    width="914"
+    height="514"
+    src="https://www.canva.com/design/DAGWJ6tQehs/1D5YkF4gbExu3YiCIhUSCw/view?embed"
+    title="Canva Presentation"
+    frameBorder="0"
+    referrerPolicy="strict-origin-when-cross-origin"
+    allowFullScreen
+  ></iframe>
+</div>
+
+
+
+
+
+
+
+
+
+
 
 
         {/* Abstract Section */}
