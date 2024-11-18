@@ -152,20 +152,20 @@ export default function Home() {
         </ul>
       </div>
 
-      <div className="flex flex-col w-4/5 mx-auto mt-4">
-        {/* Video Embed */}
-        <div className="py-2 flex justify-center">
-          <iframe
-            width="914"
-            height="514"
-            src="https://www.youtube.com/embed/laYD201rK3k"
-            title="E Jibon Madhu | Asha O Bhalobasha | Bengali Movie Song | Sharon Prabhakar"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          ></iframe>
-        </div>
+  <div className="flex flex-col w-full mx-auto mt-4">
+    {/* Canva Presentation Embed */}
+    <div className="relative" style={{ paddingTop: '56.25%' /* 16:9 Aspect Ratio */ }}>
+      <iframe
+        src="https://www.canva.com/design/DAGWJ6tQehs/xO8T-N89Nn8hvNvBuxHvJw/edit?utm_content=DAGWJ6tQehs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" 
+        title="My Canva Presentation"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+        className="absolute top-0 left-0 w-full h-full"
+      ></iframe>
+    </div>
+  </div>
+
 
         {/* Abstract Section */}
         <h2 className="text-2xl font-bold py-2" id="Abstract">
